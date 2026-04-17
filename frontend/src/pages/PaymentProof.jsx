@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { Upload, CheckCircle, Clock, MessageCircle, Image as ImageIcon, X, AlertCircle, Copy, Check } from 'lucide-react';
 import { orderService, uploadService } from '../services/api';
 import { useAuth } from '../context/AuthContext';
+import { API_BASE_URL } from '../config';
 
 const PaymentProof = () => {
   const { orderId } = useParams();
@@ -154,7 +155,7 @@ const PaymentProof = () => {
             {uploadedUrl ? (
               <div className="relative">
                 <img 
-                  src={`http://localhost:5000${uploadedUrl}`}
+                  src={`${API_BASE_URL}${uploadedUrl}`}
                   alt="Bukti Pembayaran"
                   className="w-full h-64 object-cover rounded-2xl"
                 />

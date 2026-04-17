@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Plus, Edit, Trash2, Eye, EyeOff, Upload, X } from 'lucide-react';
 import { accountService, gameService, uploadService } from '../../services/api';
+import { API_BASE_URL } from '../../config';
 import { useAuth } from '../../context/AuthContext';
 
 const AdminAccounts = () => {
@@ -139,7 +140,7 @@ const AdminAccounts = () => {
                       <div className="flex items-center space-x-3">
                         {account.image_url ? (
                           <img 
-                            src={`http://localhost:5000${account.image_url}`}
+                            src={`${API_BASE_URL}${account.image_url}`}
                             alt={account.title}
                             className="w-12 h-12 object-cover rounded-lg"
                           />
@@ -163,7 +164,7 @@ const AdminAccounts = () => {
                         onChange={async (e) => {
                           const newStatus = e.target.value;
                           try {
-                            await fetch(`http://localhost:5000/api/accounts/${account.id}/status`, {
+                            await fetch(`${API_BASE_URL}/api/accounts/${account.id}/status`, {
                               method: 'PATCH',
                               headers: {
                                 'Content-Type': 'application/json',
@@ -265,7 +266,7 @@ const AdminAccounts = () => {
                 {formData.image_url ? (
                   <div className="relative">
                     <img 
-                      src={`http://localhost:5000${formData.image_url}`}
+                      src={`${API_BASE_URL}${formData.image_url}`}
                       alt="Preview"
                       className="w-full h-40 object-cover rounded-lg"
                     />

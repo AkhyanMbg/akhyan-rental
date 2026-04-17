@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Plus, Edit, Trash2, Upload, X, Image as ImageIcon } from 'lucide-react';
 import { gameService, uploadService } from '../../services/api';
 import { useAuth } from '../../context/AuthContext';
+import { API_BASE_URL } from '../../config';
 
 const AdminGames = () => {
   const { isAdmin } = useAuth();
@@ -116,7 +117,7 @@ const AdminGames = () => {
                       <div className="flex items-center space-x-3">
                         {game.image_url ? (
                           <img 
-                            src={`http://localhost:5000${game.image_url}`} 
+                            src={`${API_BASE_URL}${game.image_url}`} 
                             alt={game.name}
                             className="w-12 h-12 object-cover rounded-lg"
                           />
@@ -192,7 +193,7 @@ const AdminGames = () => {
                 {formData.image_url ? (
                   <div className="relative">
                     <img 
-                      src={`http://localhost:5000${formData.image_url}`}
+                      src={`${API_BASE_URL}${formData.image_url}`}
                       alt="Preview"
                       className="w-full h-40 object-cover rounded-lg"
                     />

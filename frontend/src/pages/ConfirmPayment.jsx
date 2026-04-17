@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CheckCircle, Clock, Upload, MessageCircle, Image as ImageIcon, X, AlertCircle, Copy, Check, Search } from 'lucide-react';
 import { orderService, uploadService } from '../services/api';
+import { API_BASE_URL } from '../config';
 
 const ConfirmPayment = () => {
   const navigate = useNavigate();
@@ -186,7 +187,7 @@ const ConfirmPayment = () => {
                     {uploadedUrl ? (
                       <div className="relative">
                         <img 
-                          src={`http://localhost:5000${uploadedUrl}`}
+                          src={`${API_BASE_URL}${uploadedUrl}`}
                           alt="Bukti Pembayaran"
                           className="w-full h-48 object-cover rounded-2xl"
                         />

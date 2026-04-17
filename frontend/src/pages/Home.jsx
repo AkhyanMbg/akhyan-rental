@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Shield, Clock, CreditCard, Headphones, ChevronRight, Star, Zap, Award, Users, TrendingUp } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 import { gameService } from '../services/api';
+import { API_BASE_URL } from '../config';
 
 const Home = () => {
   const [games, setGames] = useState([]);
@@ -234,7 +235,7 @@ const Home = () => {
                 <div className="relative bg-white rounded-3xl shadow-xl overflow-hidden group-hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3">
                   <div className={`h-48 bg-gradient-to-br ${gameColors[game.slug] || 'from-purple-500 to-blue-500'} relative overflow-hidden`}>
                     {game.image_url ? (
-                      <img src={`http://localhost:5000${game.image_url}`} alt={game.name} className="w-full h-full object-cover" />
+                      <img src={`${API_BASE_URL}${game.image_url}`} alt={game.name} className="w-full h-full object-cover" />
                     ) : (
                       <>
                         <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>

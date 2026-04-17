@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { CheckCircle, XCircle, Clock, Eye, MessageCircle, Send, ChevronDown, User, Copy, Check, X, Image as ImageIcon } from 'lucide-react';
+import { API_BASE_URL } from '../../config';
 import { adminService } from '../../services/api';
 import { useAuth } from '../../context/AuthContext';
 
@@ -176,10 +177,10 @@ const AdminOrders = () => {
                           Bukti Pembayaran:
                         </p>
                         <img 
-                          src={`http://localhost:5000${order.payment_proof}`}
+                          src={`${API_BASE_URL}${order.payment_proof}`}
                           alt="Bukti Pembayaran"
                           className="max-w-xs h-32 object-cover rounded-lg cursor-pointer hover:scale-105 transition-transform"
-                          onClick={() => window.open(`http://localhost:5000${order.payment_proof}`, '_blank')}
+                          onClick={() => window.open(`${API_BASE_URL}${order.payment_proof}`, '_blank')}
                         />
                       </div>
                     )}

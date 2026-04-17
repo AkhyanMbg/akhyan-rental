@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { Search, Filter, Star, SlidersHorizontal, X, ChevronDown, Zap } from 'lucide-react';
 import { gameService, accountService } from '../services/api';
+import { API_BASE_URL } from '../config';
 
 const Catalog = () => {
   const [searchParams] = useSearchParams();
@@ -198,7 +199,7 @@ const Catalog = () => {
                   <div className="relative bg-white rounded-3xl shadow-lg overflow-hidden group-hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
                     <div className={`h-48 bg-gradient-to-br ${gameColors[account.game_slug] || 'from-purple-500 to-blue-500'} relative overflow-hidden`}>
                       {account.image_url ? (
-                        <img src={`http://localhost:5000${account.image_url}`} alt={account.title} className="w-full h-full object-cover" />
+                        <img src={`${API_BASE_URL}${account.image_url}`} alt={account.title} className="w-full h-full object-cover" />
                       ) : (
                         <div className="absolute inset-0 flex items-center justify-center">
                           <span className="text-7xl transform group-hover:scale-125 transition-transform duration-500 opacity-50">
